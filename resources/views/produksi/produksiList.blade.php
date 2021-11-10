@@ -8,6 +8,8 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection
 
 @section('content')
@@ -16,10 +18,11 @@
         <div class="m-subheader ">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
-                    <h3 class="m-subheader__title m-subheader__title--separator">
-                        Data Produksi Produk
+                    <h3 class="m-subheader__title">
+                        Daftar Produksi
                     </h3>
                 </div>
+                <a href="{{ route('produksiCreate') }}" class="btn btn-success">TAMBAH PRODUKSI</a>
             </div>
         </div>
         <!-- END: Subheader -->
@@ -27,7 +30,7 @@
             <div class="m-portlet m-portlet--mobile">
                 <div class="m-portlet__body">
                     <div class="table-responsive">
-                        <table id="example" class="table table-bordered" style="width:100%">
+                        <table id="example" class="table table-bordered datatable" style="width:100%">
                             <thead>
                                 <tr>
                                     <th width="20">No</th>
@@ -51,8 +54,10 @@
                                         <td>{{ $produksi->status }}</td>
                                         <td>{{ $produksi->publish }}</td>
                                         <td>
-                                            <a href="#" class="badge badge-warning p-2">Edit</a>
-                                            <a href="#" class="badge badge-danger p-2">Hapus</a>
+                                            <a href="{{ route('produksiEdit', [$produksi->id]) }}"
+                                                class="badge badge-warning p-2">Edit</a>
+                                            <button type="button" class="badge badge-danger p-2 border-0 btn-hapus"
+                                                data-route="{{ route('produksiDelete', [$produksi->id]) }}">Hapus</button>
                                         </td>
                                     </tr>
                                 @endforeach

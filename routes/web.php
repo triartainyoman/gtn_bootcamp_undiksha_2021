@@ -14,3 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Produksi@index')->name('produksiList');
+
+Route::get('/create', 'Produksi@create')->name('produksiCreate');
+Route::post('/insert', 'Produksi@insert')->name('produksiInsert');
+
+Route::get('/edit/{id}', 'Produksi@edit')->name('produksiEdit');
+Route::post('/update/{id}', 'Produksi@update')->name('produksiUpdate');
+
+Route::delete('/delete/{id}', 'Produksi@delete')->name('produksiDelete');

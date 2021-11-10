@@ -9,6 +9,7 @@ class mProduksi extends Model
     protected $table = 'tb_produksi';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'kode_produksi',
         'urutan',
         'id_lokasi',
         'kode_lokasi',
