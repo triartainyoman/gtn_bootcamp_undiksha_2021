@@ -2,6 +2,8 @@ $(document).ready(function() {
   datatable();
   form_send();
   hapus();
+
+  produk_tambah();
 } );
 
 function datatable() {
@@ -76,5 +78,21 @@ function hapus() {
         )
       }
     })
+  })
+}
+
+function produk_tambah() {
+  $('.btn-produk-tambah').click(function() {
+    var produk_row = $('.table-produk-row tbody').html();
+
+    $('.table-produk tbody').append(produk_row);
+
+    produk_hapus();
+  });
+}
+
+function produk_hapus() {
+  $('.btn-produk-hapus').click(function() {
+    $(this).parents('tr').remove();
   })
 }

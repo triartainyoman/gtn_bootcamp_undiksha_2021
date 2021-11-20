@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\mProduksi;
 use App\Models\mLokasi;
+use App\Models\mProduk;
+use App\Models\mProduksi;
 use Illuminate\Http\Request;
 
 class Produksi extends Controller
@@ -17,9 +18,13 @@ class Produksi extends Controller
     public function create()
     {
         $lokasi = mLokasi::all();
+        $produk = mProduk::all();
+
         $data = [
             'lokasi' => $lokasi,
+            'produk' => $produk,
         ];
+
         return view('produksi.produksiCreate', $data);
     }
 
