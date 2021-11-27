@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\mLokasi;
 use App\Models\mProduk;
 use App\Models\mProduksi;
+use App\Models\mKomposisiProduk;
 use Illuminate\Http\Request;
 
 class Produksi extends Controller
@@ -101,5 +102,28 @@ class Produksi extends Controller
     public function delete($id)
     {
         mProduksi::where('id', $id)->delete();
+    }
+
+    function bahan_list(Request $request)
+    {
+        $id_produk = $request->input('id_produk');
+        $qty_produksi = $request->input('qty_produksi');
+
+        $komposisi_produk = mKomposisiProduk::select([
+            'tb_bahan.*',
+            'tb_komposisi_produk.*',
+            'tb_komposisi_produk.qty AS komposisi_qty'
+        ])
+            ->leftJoin('tb_bahan', 'tb_bahan.id', '=', 'tb_komposisi_produk.id_bahan')
+            ->where('tb_komposisi_produk.id_produk', $id_produk)
+            ->orderBy('nama_bahan', 'ASC')
+            ->get();
+
+        $data = [
+            'qty_produksi' => $qty_produksi,
+            'komposisi_produk' => $komposisi_produk
+        ];
+
+        return view('produksi.produksiBahanList', $data);
     }
 }

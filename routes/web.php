@@ -22,3 +22,5 @@ Route::get('/edit/{id}', 'Produksi@edit')->name('produksiEdit');
 Route::post('/update/{id}', 'Produksi@update')->name('produksiUpdate');
 
 Route::delete('/delete/{id}', 'Produksi@delete')->name('produksiDelete');
+
+Route::post('/bahan/list', 'Produksi@bahan_list')->name('produksiBahanList');

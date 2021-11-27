@@ -32,7 +32,7 @@
     @yield('css')
 </head>
 
-<body data-csrf-token="{{ csrf_token() }}"
+<body data-csrf-token="{{ csrf_token() }}" data-produksi-bahan-list="{{ route('produksiBahanList') }}"
     class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
     <!-- begin:: Page -->
     <div class="m-grid m-grid--hor m-grid--root m-page">
@@ -51,8 +51,7 @@
                             <div class="m-stack__item m-stack__item--middle m-brand__tools">
                                 <!-- BEGIN: Left Aside Minimize Toggle -->
                                 <a href="javascript:;" id="m_aside_left_minimize_toggle"
-                                    class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block 
-					 ">
+                                    class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block">
                                     <span></span>
                                 </a>
                                 <!-- END -->
