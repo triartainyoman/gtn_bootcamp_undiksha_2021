@@ -100,16 +100,16 @@ function produk_hapus() {
 }
 
 function produk_bahan_change() {
-  $('[name="qty_produksi"]').on('keyup change', function () {
-      var id_produk = $(this).parents('td').siblings('td.produk').children('[name="id_produk"]').val();
+  $('[name="qty_produksi[]"]').on('keyup change', function () {
+      var id_produk = $(this).parents('td').siblings('td.produk').children('[name="id_produk[]"]').val();
       var qty_produksi = $(this).val();
 
       produk_bahan_proses(id_produk, qty_produksi);
   });
 
-  $('[name="id_produk"]').on('keyup change', function () {
+  $('[name="id_produk[]"]').on('keyup change', function () {
       var id_produk = $(this).val();
-      var qty_produksi = $(this).parents('td').siblings('td.qty').children('[name="qty_produksi"]').val();
+      var qty_produksi = $(this).parents('td').siblings('td.qty').children('[name="qty_produksi[]"]').val();
 
       produk_bahan_proses(id_produk, qty_produksi);
   });
@@ -135,5 +135,5 @@ function produk_bahan_proses(id_produk, qty_produksi) {
 }
 
 function produk_bahan_hapus() {
-  $('.data-bahan').html('');
+  $('.data-bahan-view').html('');
 }
